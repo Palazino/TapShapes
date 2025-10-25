@@ -2520,7 +2520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0af8dfa446acb45a13eb8ac4c2374b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupOffsetX: -600
+  popupOffsetX: -550
   popupOffsetY: -800
   mainCanvas: {fileID: 1599847415}
   scoreText: {fileID: 1386905404}
