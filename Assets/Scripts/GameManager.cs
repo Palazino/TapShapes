@@ -5,6 +5,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Réglage position du Score Popup")]
+    public float popupOffsetX = 0f;
+    public float popupOffsetY = 0f;
+
+    [Header("Canvas principal (Screen Space Overlay)")]
+    public Canvas mainCanvas;
+    private Transform canvasTransform;
+
     [Header("UI")]
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI comboText;
@@ -49,11 +57,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        canvasTransform = mainCanvas.transform;
+
+        if (UpgradeEffects.Instance != null)
+        {
+            lives += UpgradeEffects.Instance.extraLives;
+            currency += UpgradeEffects.Instance.startGems;
+        }
+
         LoadCurrency();
         UpdateScoreUI();
         UpdateLivesUI();
         UpdateComboUI();
-        UpdateCurrencyUI(); 
+        UpdateCurrencyUI();
     }
 
     void Update()
@@ -77,29 +93,65 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int amount, Vector3 worldPosition)
     {
+        // Appliquer les bonus d'amélioration
+        if (UpgradeEffects.Instance != null)
+            amount += UpgradeEffects.Instance.bonusScorePerClick;
+
+        // Appliquer le multiplicateur du combo
         int finalScore = Mathf.RoundToInt(amount * currentMultiplier);
         score += finalScore;
 
+        // Mettre à jour l'UI principale
         UpdateScoreUI();
 
-        if (scorePopPrefab != null)
+        // Créer le popup avec le bon score (dans le Canvas)
+        if (scorePopPrefab != null && mainCanvas != null)
         {
-            GameObject popup = Instantiate(scorePopPrefab, worldPosition, Quaternion.identity);
+            // Récupération du RectTransform du Canvas
+            RectTransform canvasRect = mainCanvas.GetComponent<RectTransform>();
+            Vector2 anchoredPos;
+
+            Camera cam = Camera.main;
+
+            // Conversion monde → écran
+            Vector2 screenPoint = cam.WorldToScreenPoint(worldPosition);
+
+            // Conversion écran → coordonnées locales du Canvas
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvasRect,
+                screenPoint,
+                mainCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam,
+                out anchoredPos
+            );
+
+            // Application des offsets manuels
+            anchoredPos += new Vector2(popupOffsetX, popupOffsetY);
+
+            // Instanciation dans le Canvas
+            GameObject popup = Instantiate(scorePopPrefab, canvasRect);
+            RectTransform rect = popup.GetComponent<RectTransform>();
+            rect.anchoredPosition = anchoredPos;
+            rect.localScale = Vector3.one;
+
+            // Appliquer le texte
             ScorePop popScript = popup.GetComponent<ScorePop>();
             if (popScript != null)
                 popScript.SetText("+" + finalScore);
+
+            Debug.Log($"Popup Score = +{finalScore}");
         }
 
+        // Gérer le combo
         AddCombo();
 
-        
-        if (Random.value < 0.15f)
-        {
+        // Chance de drop de gemme, modifiée par l'upgrade si active
+        float dropChance = 0.15f;
+        if (UpgradeEffects.Instance != null)
+            dropChance += UpgradeEffects.Instance.gemDropBonus;
+
+        if (Random.value < dropChance)
             AddCurrency(1);
-        }
     }
-
-
 
     void AddCombo()
     {
@@ -189,7 +241,7 @@ public class GameManager : MonoBehaviour
     {
         currency += amount;
         UpdateCurrencyUI();
-        SaveCurrency(); 
+        SaveCurrency();
     }
 
     public bool SpendCurrency(int amount)
@@ -198,12 +250,11 @@ public class GameManager : MonoBehaviour
         {
             currency -= amount;
             UpdateCurrencyUI();
-            SaveCurrency(); 
+            SaveCurrency();
             return true;
         }
         return false;
     }
-
 
     void UpdateCurrencyUI()
     {
@@ -218,6 +269,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("PlayerCurrency", currency);
         PlayerPrefs.Save();
     }
+
     private void LoadCurrency()
     {
         currency = PlayerPrefs.GetInt("PlayerCurrency", 0); // 0 par défaut si rien n’est encore sauvegardé
@@ -225,5 +277,4 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-
 }

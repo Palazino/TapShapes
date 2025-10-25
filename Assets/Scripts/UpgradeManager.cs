@@ -13,12 +13,19 @@ public class UpgradeManager : MonoBehaviour
     void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+            if (allUpgrades == null)
+                allUpgrades = new List<UpgradeData>();
+            LoadUpgrades();
+        }
         else
+        {
             Destroy(gameObject);
-
-        LoadUpgrades();
+        }
     }
+
 
     public void UnlockUpgrade(string id)
     {
