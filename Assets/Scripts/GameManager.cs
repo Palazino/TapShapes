@@ -63,7 +63,10 @@ public class GameManager : MonoBehaviour
         {
             lives += UpgradeEffects.Instance.extraLives;
             currency += UpgradeEffects.Instance.startGems;
+            comboDuration += UpgradeEffects.Instance.comboDurationBonus;
+            currentMultiplier += UpgradeEffects.Instance.baseMultiplierBonus;
         }
+
 
         LoadCurrency();
         UpdateScoreUI();
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
             if (comboTimer <= 0)
             {
                 currentCombo = 0;
-                currentMultiplier = 1f;
+                currentMultiplier = 1f + (UpgradeEffects.Instance != null ? UpgradeEffects.Instance.baseMultiplierBonus : 0f);
                 UpdateComboUI();
             }
         }
@@ -161,7 +164,10 @@ public class GameManager : MonoBehaviour
         if (currentCombo > bestCombo)
             bestCombo = currentCombo;
 
-        currentMultiplier = 1f + (currentCombo * 0.1f);
+        currentMultiplier = 1f
+     + (UpgradeEffects.Instance != null ? UpgradeEffects.Instance.baseMultiplierBonus : 0f)
+     + (currentCombo * 0.1f);
+
         UpdateComboUI();
     }
 

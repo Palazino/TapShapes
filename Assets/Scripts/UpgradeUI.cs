@@ -16,7 +16,8 @@ public class UpgradeUI : MonoBehaviour
     {
         foreach (var upgrade in UpgradeManager.Instance.allUpgrades)
         {
-            GameObject go = Instantiate(upgradeButtonPrefab, contentParent);
+            GameObject go = Instantiate(upgradeButtonPrefab, contentParent, false);
+
 
             TMP_Text[] texts = go.GetComponentsInChildren<TMP_Text>();
             Button buyButton = go.GetComponentInChildren<Button>();
