@@ -283,4 +283,55 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    // --- FEEDBACK DE CHANGEMENT DE VAGUE ---
+    public void TriggerDifficultyFlash(int waveNumber)
+    {
+        // 1️⃣ On affiche un message dans la console (utile pour debug)
+        Debug.Log($"⚡ Nouvelle vague : {waveNumber} !");
+
+        // 2️⃣ Si tu as une UI de texte ou un Canvas d’effets, on peut y lier un flash :
+        if (waveFlashCoroutine != null)
+            StopCoroutine(waveFlashCoroutine);
+
+        waveFlashCoroutine = StartCoroutine(DifficultyFlashRoutine(waveNumber));
+    }
+
+    private Coroutine waveFlashCoroutine;
+
+    private System.Collections.IEnumerator DifficultyFlashRoutine(int waveNumber)
+    {
+        // 🧩 Exemple simple de flash visuel sur un Image UI nommée "FlashImage"
+        UnityEngine.UI.Image flashImage = GameObject.Find("FlashImage")?.GetComponent<UnityEngine.UI.Image>();
+
+        if (flashImage != null)
+        {
+            // Couleur rouge avec transparence
+            Color startColor = new Color(1f, 0f, 0f, 0.5f);
+            Color endColor = new Color(1f, 0f, 0f, 0f);
+
+            flashImage.color = startColor;
+            yield return new WaitForSeconds(0.2f);
+
+            // Fade out rapide
+            float t = 0f;
+            while (t < 1f)
+            {
+                t += Time.deltaTime * 3f;
+                flashImage.color = Color.Lerp(startColor, endColor, t);
+                yield return null;
+            }
+        }
+
+        // 3️⃣ (Optionnel) joue un son
+        AudioSource audio = GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            // tu peux mettre un son d'alerte ou de tension
+            audio.Play();
+        }
+
+        yield break;
+    }
+
 }

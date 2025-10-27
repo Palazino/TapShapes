@@ -527,11 +527,6 @@ MonoBehaviour:
     description: Augmente les chances de gain de gemmes
     cost: 0
     isUnlocked: 0
-  - upgradeID: UP_GEM_START
-    displayName: "Gemmes de d\xE9part"
-    description: Commence chaque partie avec 5 Gemmes
-    cost: 0
-    isUnlocked: 0
   - upgradeID: UP_SLOW_FADE
     displayName: "Dur\xE9e forme +0.2sec"
     description: Les forment restent plus longtemps
