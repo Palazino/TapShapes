@@ -156,6 +156,48 @@ public class GameManager : MonoBehaviour
             AddCurrency(1);
     }
 
+    // 🔁 Remet le combo à zéro
+    public void ResetCombo()
+    {
+        currentCombo = 0;
+        currentMultiplier = 1f + (UpgradeEffects.Instance != null ? UpgradeEffects.Instance.baseMultiplierBonus : 0f);
+        UpdateComboUI();
+    }
+
+    // 🎯 Création simplifiée de popup custom (pour les formes spéciales)
+    public void SpawnScorePopup(string text, Vector3 worldPosition, Color color)
+    {
+        if (scorePopPrefab == null || mainCanvas == null) return;
+
+        RectTransform canvasRect = mainCanvas.GetComponent<RectTransform>();
+        Vector2 anchoredPos;
+
+        Camera cam = Camera.main;
+        Vector2 screenPoint = cam.WorldToScreenPoint(worldPosition);
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRect,
+            screenPoint,
+            mainCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam,
+            out anchoredPos
+        );
+
+        anchoredPos += new Vector2(popupOffsetX, popupOffsetY);
+
+        GameObject popup = Instantiate(scorePopPrefab, canvasRect);
+        RectTransform rect = popup.GetComponent<RectTransform>();
+        rect.anchoredPosition = anchoredPos;
+        rect.localScale = Vector3.one;
+
+        ScorePop popScript = popup.GetComponent<ScorePop>();
+        if (popScript != null)
+        {
+            popScript.SetText(text);
+            if (popScript.textMesh != null)
+                popScript.textMesh.color = color;
+        }
+    }
+
     void AddCombo()
     {
         comboTimer = comboDuration;
@@ -335,3 +377,5 @@ public class GameManager : MonoBehaviour
     }
 
 }
+
+ 

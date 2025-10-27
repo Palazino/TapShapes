@@ -9,9 +9,14 @@ public class DifficultyManager : MonoBehaviour
     [Header("Réglages de difficulté")]
     public float minLifeTime = 0.8f;
     public float maxLifeTime = 3f;
-
     public int maxShapesOnScreen = 1;
     public float timeToReachMaxDifficulty = 60f; // temps en secondes pour atteindre la difficulté maximale
+
+    [Header("Seuils de difficulté spéciaux")]
+    [SerializeField] private float tier2Time = 45f; // apparition des formes négatives
+    [SerializeField] private float tier3Time = 90f; // apparition des casse-combos
+    [SerializeField] private float tier4Time = 120f; // apparition formes spéciales
+
 
     void Awake()
     {
@@ -24,6 +29,13 @@ public class DifficultyManager : MonoBehaviour
     void Update()
     {
         timeElapsed += Time.deltaTime;
+    }
+    public int GetCurrentTier()
+    {
+        if (timeElapsed >= tier4Time) return 4;
+        if (timeElapsed >= tier3Time) return 3;
+        if (timeElapsed >= tier2Time) return 2;
+        return 1;
     }
 
     // Appelé par les formes pour savoir leur durée de vie

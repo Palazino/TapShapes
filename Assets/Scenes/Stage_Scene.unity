@@ -928,6 +928,14 @@ MonoBehaviour:
   maxLifeTime: 4
   maxShapesOnScreen: 8
   timeToReachMaxDifficulty: 120
+  tier2Time: 45
+  tier3Time: 90
+  tier4Time: 120
+  waveDuration: 20
+  intensityBoost: 0.5
+  relaxFactor: 0.8
+  relaxDuration: 5
+  enableWaveFeedback: 1
 --- !u!4 &563045995
 Transform:
   m_ObjectHideFlags: 0
@@ -1076,6 +1084,12 @@ MonoBehaviour:
   - {fileID: 1328620321970086915, guid: b1eab6223185e4d4e98194437a4af90d, type: 3}
   trapShapes:
   - {fileID: 2281454238642889867, guid: a1192be0fe6c7814db4c6d7f4a69114b, type: 3}
+  scorePenaltyShapes:
+  - {fileID: 2647755755033960256, guid: f24ae051cd488074b818764bc780a0be, type: 3}
+  comboBreakerShapes:
+  - {fileID: 8332945055592530650, guid: 71e5ec476d862614c8f5c69b76ca4d4b, type: 3}
+  ghostShapes:
+  - {fileID: 5972214651916521581, guid: beffc46871a2c354e9cd167f9674cd25, type: 3}
   spawnAreaMin: {x: -2.2, y: -4.2}
   spawnAreaMax: {x: 2.2, y: 4.2}
   baseSpawnInterval: 0.2

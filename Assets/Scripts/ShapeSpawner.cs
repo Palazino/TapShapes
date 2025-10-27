@@ -7,6 +7,12 @@ public class ShapeSpawner : MonoBehaviour
     public GameObject[] normalShapes;
     public GameObject[] trapShapes;
 
+    [Header("Formes spéciales débloquées selon la difficulté")]
+    public GameObject[] scorePenaltyShapes;   // Enlèvent des points
+    public GameObject[] comboBreakerShapes;   // Cassent le combo
+    public GameObject[] ghostShapes;          // Invisibles brièvement
+
+
     [Header("Zone de spawn")]
     public Vector2 spawnAreaMin;
     public Vector2 spawnAreaMax;
@@ -78,6 +84,8 @@ public class ShapeSpawner : MonoBehaviour
         if (!foundSpot) return;
 
         GameObject shapeToSpawn = null;
+
+        int tier = DifficultyManager.Instance.GetCurrentTier();
         float trapChance = DifficultyManager.Instance.GetTrapChance();
         bool shouldSpawnTrap = Random.value < trapChance;
 
@@ -85,10 +93,22 @@ public class ShapeSpawner : MonoBehaviour
         {
             shapeToSpawn = trapShapes[Random.Range(0, trapShapes.Length)];
         }
-        else if (normalShapes.Length > 0)
+        else
         {
-            shapeToSpawn = normalShapes[Random.Range(0, normalShapes.Length)];
+            // Base : forme normale
+            shapeToSpawn = normalShapes.Length > 0 ? normalShapes[Random.Range(0, normalShapes.Length)] : null;
+
+            // Selon le tier, on ajoute des chances de formes spéciales
+            if (tier >= 2 && scorePenaltyShapes.Length > 0 && Random.value < 0.1f)
+                shapeToSpawn = scorePenaltyShapes[Random.Range(0, scorePenaltyShapes.Length)];
+
+            if (tier >= 3 && comboBreakerShapes.Length > 0 && Random.value < 0.07f)
+                shapeToSpawn = comboBreakerShapes[Random.Range(0, comboBreakerShapes.Length)];
+
+            if (tier >= 4 && ghostShapes.Length > 0 && Random.value < 0.05f)
+                shapeToSpawn = ghostShapes[Random.Range(0, ghostShapes.Length)];
         }
+
 
         if (shapeToSpawn == null) return;
 
