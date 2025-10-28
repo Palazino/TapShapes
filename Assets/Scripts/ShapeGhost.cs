@@ -4,11 +4,20 @@ using System.Collections;
 public class ShapeGhost : MonoBehaviour
 {
     private SpriteRenderer sr;
+    [SerializeField] private float lifeTime = 2.5f;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         StartCoroutine(GhostRoutine());
+        Invoke(nameof(AutoDestroy), lifeTime);
+    }
+
+    private void AutoDestroy()
+    {
+        // Si elle n’a pas encore été cliquée
+        if (gameObject != null)
+            GameManager.Instance?.DestroyShape(gameObject);
     }
 
     IEnumerator GhostRoutine()

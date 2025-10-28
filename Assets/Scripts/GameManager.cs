@@ -90,6 +90,20 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void DestroyShape(GameObject shape)
+    {
+        if (shape == null) return;
+
+        ShapeFade fade = shape.GetComponent<ShapeFade>();
+        if (fade != null)
+        {
+            fade.StartCoroutine(fade.FadeOutWithPulse());
+        }
+        else
+        {
+            Destroy(shape);
+        }
+    }
 
     // GAIN NORMAL DE SCORE (avec combo, bonus, gemmes, etc.)
     public void AddScore(int amount, Vector3 worldPosition, bool showPopup = true)

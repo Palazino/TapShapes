@@ -90,7 +90,7 @@ public class ShapeFade : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected IEnumerator FadeOutWithPulse()
+    public IEnumerator FadeOutWithPulse()
     {
         isFadingOut = true;
 
