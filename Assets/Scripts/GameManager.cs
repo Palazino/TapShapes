@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
             currentMultiplier += UpgradeEffects.Instance.baseMultiplierBonus;
         }
 
-
         LoadCurrency();
         UpdateScoreUI();
         UpdateLivesUI();
@@ -87,67 +86,27 @@ public class GameManager : MonoBehaviour
 
             if (comboTimer <= 0)
             {
-                currentCombo = 0;
-                currentMultiplier = 1f + (UpgradeEffects.Instance != null ? UpgradeEffects.Instance.baseMultiplierBonus : 0f);
-                UpdateComboUI();
+                ResetCombo();
             }
         }
     }
 
-    public void AddScore(int amount, Vector3 worldPosition)
+    // GAIN NORMAL DE SCORE (avec combo, bonus, gemmes, etc.)
+    public void AddScore(int amount, Vector3 worldPosition, bool showPopup = true)
     {
-        // Appliquer les bonus d'amélioration
         if (UpgradeEffects.Instance != null)
             amount += UpgradeEffects.Instance.bonusScorePerClick;
 
-        // Appliquer le multiplicateur du combo
         int finalScore = Mathf.RoundToInt(amount * currentMultiplier);
         score += finalScore;
-
-        // Mettre à jour l'UI principale
         UpdateScoreUI();
 
-        // Créer le popup avec le bon score (dans le Canvas)
-        if (scorePopPrefab != null && mainCanvas != null)
-        {
-            // Récupération du RectTransform du Canvas
-            RectTransform canvasRect = mainCanvas.GetComponent<RectTransform>();
-            Vector2 anchoredPos;
+        if (showPopup && scorePopPrefab != null && mainCanvas != null)
+            SpawnScorePopup(finalScore > 0 ? $"+{finalScore}" : finalScore.ToString(), worldPosition, finalScore >= 0 ? Color.white : Color.red);
 
-            Camera cam = Camera.main;
+        if (finalScore > 0)
+            AddCombo();
 
-            // Conversion monde → écran
-            Vector2 screenPoint = cam.WorldToScreenPoint(worldPosition);
-
-            // Conversion écran → coordonnées locales du Canvas
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvasRect,
-                screenPoint,
-                mainCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam,
-                out anchoredPos
-            );
-
-            // Application des offsets manuels
-            anchoredPos += new Vector2(popupOffsetX, popupOffsetY);
-
-            // Instanciation dans le Canvas
-            GameObject popup = Instantiate(scorePopPrefab, canvasRect);
-            RectTransform rect = popup.GetComponent<RectTransform>();
-            rect.anchoredPosition = anchoredPos;
-            rect.localScale = Vector3.one;
-
-            // Appliquer le texte
-            ScorePop popScript = popup.GetComponent<ScorePop>();
-            if (popScript != null)
-                popScript.SetText("+" + finalScore);
-
-            Debug.Log($"Popup Score = +{finalScore}");
-        }
-
-        // Gérer le combo
-        AddCombo();
-
-        // Chance de drop de gemme, modifiée par l'upgrade si active
         float dropChance = 0.15f;
         if (UpgradeEffects.Instance != null)
             dropChance += UpgradeEffects.Instance.gemDropBonus;
@@ -156,7 +115,22 @@ public class GameManager : MonoBehaviour
             AddCurrency(1);
     }
 
-    // 🔁 Remet le combo à zéro
+    // PÉNALITÉ FIXE — sans combo ni multiplicateur
+    public void AddPenalty(int amountNegative, Vector3 worldPosition, bool showPopup = true, bool breakCombo = false)
+    {
+        if (amountNegative > 0)
+            amountNegative = -Mathf.Abs(amountNegative);
+
+        score += amountNegative;
+        UpdateScoreUI();
+
+        if (showPopup)
+            SpawnScorePopup(amountNegative.ToString(), worldPosition, Color.red);
+
+        if (breakCombo)
+            ResetCombo();
+    }
+
     public void ResetCombo()
     {
         currentCombo = 0;
@@ -164,14 +138,12 @@ public class GameManager : MonoBehaviour
         UpdateComboUI();
     }
 
-    // 🎯 Création simplifiée de popup custom (pour les formes spéciales)
     public void SpawnScorePopup(string text, Vector3 worldPosition, Color color)
     {
         if (scorePopPrefab == null || mainCanvas == null) return;
 
         RectTransform canvasRect = mainCanvas.GetComponent<RectTransform>();
         Vector2 anchoredPos;
-
         Camera cam = Camera.main;
         Vector2 screenPoint = cam.WorldToScreenPoint(worldPosition);
 
@@ -202,13 +174,12 @@ public class GameManager : MonoBehaviour
     {
         comboTimer = comboDuration;
         currentCombo++;
-
         if (currentCombo > bestCombo)
             bestCombo = currentCombo;
 
         currentMultiplier = 1f
-     + (UpgradeEffects.Instance != null ? UpgradeEffects.Instance.baseMultiplierBonus : 0f)
-     + (currentCombo * 0.1f);
+            + (UpgradeEffects.Instance != null ? UpgradeEffects.Instance.baseMultiplierBonus : 0f)
+            + (currentCombo * 0.1f);
 
         UpdateComboUI();
     }
@@ -221,9 +192,7 @@ public class GameManager : MonoBehaviour
         UpdateLivesUI();
 
         if (lives <= 0)
-        {
             TriggerGameOver();
-        }
     }
 
     void UpdateScoreUI()
@@ -267,7 +236,6 @@ public class GameManager : MonoBehaviour
         if (gameOverUI != null)
             gameOverUI.SetActive(true);
 
-        // Stop le spawn des formes
         ShapeSpawner spawner = FindObjectOfType<ShapeSpawner>();
         if (spawner != null)
             spawner.TriggerMassFall(15f);
@@ -280,10 +248,7 @@ public class GameManager : MonoBehaviour
         TriggerGameOver();
     }
 
-    public bool IsGameOver()
-    {
-        return isGameOver;
-    }
+    public bool IsGameOver() => isGameOver;
 
     public void AddCurrency(int amount)
     {
@@ -310,8 +275,6 @@ public class GameManager : MonoBehaviour
             currencyText.text = currency + " 💎";
     }
 
-    #region Sauvegarde des gemmes
-
     private void SaveCurrency()
     {
         PlayerPrefs.SetInt("PlayerCurrency", currency);
@@ -320,22 +283,16 @@ public class GameManager : MonoBehaviour
 
     private void LoadCurrency()
     {
-        currency = PlayerPrefs.GetInt("PlayerCurrency", 0); // 0 par défaut si rien n’est encore sauvegardé
+        currency = PlayerPrefs.GetInt("PlayerCurrency", 0);
         UpdateCurrencyUI();
     }
-
-    #endregion
 
     // --- FEEDBACK DE CHANGEMENT DE VAGUE ---
     public void TriggerDifficultyFlash(int waveNumber)
     {
-        // 1️⃣ On affiche un message dans la console (utile pour debug)
         Debug.Log($"⚡ Nouvelle vague : {waveNumber} !");
-
-        // 2️⃣ Si tu as une UI de texte ou un Canvas d’effets, on peut y lier un flash :
         if (waveFlashCoroutine != null)
             StopCoroutine(waveFlashCoroutine);
-
         waveFlashCoroutine = StartCoroutine(DifficultyFlashRoutine(waveNumber));
     }
 
@@ -343,19 +300,16 @@ public class GameManager : MonoBehaviour
 
     private System.Collections.IEnumerator DifficultyFlashRoutine(int waveNumber)
     {
-        // 🧩 Exemple simple de flash visuel sur un Image UI nommée "FlashImage"
         UnityEngine.UI.Image flashImage = GameObject.Find("FlashImage")?.GetComponent<UnityEngine.UI.Image>();
 
         if (flashImage != null)
         {
-            // Couleur rouge avec transparence
             Color startColor = new Color(1f, 0f, 0f, 0.5f);
             Color endColor = new Color(1f, 0f, 0f, 0f);
 
             flashImage.color = startColor;
             yield return new WaitForSeconds(0.2f);
 
-            // Fade out rapide
             float t = 0f;
             while (t < 1f)
             {
@@ -365,17 +319,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // 3️⃣ (Optionnel) joue un son
         AudioSource audio = GetComponent<AudioSource>();
         if (audio != null)
-        {
-            // tu peux mettre un son d'alerte ou de tension
             audio.Play();
-        }
 
         yield break;
     }
-
 }
-
- 

@@ -956,9 +956,9 @@ MonoBehaviour:
   maxLifeTime: 4
   maxShapesOnScreen: 8
   timeToReachMaxDifficulty: 120
-  tier2Time: 45
-  tier3Time: 90
-  tier4Time: 120
+  tier2Time: 10
+  tier3Time: 10
+  tier4Time: 10
   waveDuration: 20
   intensityBoost: 0.5
   relaxFactor: 0.8

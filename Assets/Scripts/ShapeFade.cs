@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -6,7 +6,7 @@ public class ShapeFade : MonoBehaviour
 {
     protected SpriteRenderer sr;
 
-    [Header("Dur�es")]
+    [Header("Durées")]
     public float fadeDuration = 0.5f;
     public float lifeTime = 3f;
 
@@ -37,13 +37,20 @@ public class ShapeFade : MonoBehaviour
 
     protected virtual void OnMouseDown()
     {
+        // Empêche le comportement de base sur les formes spéciales
+        if (GetComponent<ShapeScorePenalty>() != null
+            || GetComponent<ShapeComboBreaker>() != null
+            || GetComponent<ShapeGhost>() != null)
+            return;
+
         if (!isFadingOut)
         {
+            isFadingOut = true; // anti double-clic instantané
             StartCoroutine(FadeOutWithPulse());
             GameManager.Instance?.AddScore(1, transform.position);
-
         }
     }
+
 
     protected virtual void AutoDestroy()
     {
@@ -73,7 +80,7 @@ public class ShapeFade : MonoBehaviour
             float alpha = Mathf.Lerp(1f, 0f, progress);
             sr.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
 
-            // Rotation acc�l�r�e
+            // Rotation accélérée
             rotationSpeed = Mathf.Lerp(0f, maxRotationSpeed, progress);
             transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
 

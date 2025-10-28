@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class ShapeScorePenalty : MonoBehaviour
 {
+    [SerializeField] private int penaltyAmount = -5;
+    [SerializeField] private bool breakCombo = false;
+
     private void OnMouseDown()
     {
         if (GameManager.Instance == null) return;
 
-        // Enlève des points
-        GameManager.Instance.AddScore(-5, transform.position);
+        // Applique une pénalité fixe, sans combo ni multiplicateur
+        GameManager.Instance.AddPenalty(penaltyAmount, transform.position, showPopup: false, breakCombo: breakCombo);
 
-        // Affiche un popup rouge
-        GameManager.Instance.SpawnScorePopup("-5", transform.position, Color.red);
+        // Popup rouge distinct
+        GameManager.Instance.SpawnScorePopup(penaltyAmount.ToString(), transform.position, Color.red);
 
         Destroy(gameObject);
     }
