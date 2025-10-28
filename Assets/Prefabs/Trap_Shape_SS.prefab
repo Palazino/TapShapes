@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7328034070832211625}
   - component: {fileID: 2542815710153384832}
   m_Layer: 0
-  m_Name: GameOver
+  m_Name: Trap_Shape_SS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.3572515, y: 1.878361, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.01886791, g: 0.010074751, b: 0.010074751, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0747775a78272c749b107fa113f06aa2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -140,11 +140,11 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.02, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.24, y: 10.24}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -152,9 +152,18 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+    - - {x: 4.389486, y: -2.806988}
+      - {x: 3.991674, y: -1.6435813}
+      - {x: 2.7846518, y: 0.66078496}
+      - {x: -0.020177122, y: 4.9154997}
+      - {x: -2.830975, y: 0.53386927}
+      - {x: -3.901492, y: -1.638834}
+      - {x: -4.394238, y: -3.375809}
+      - {x: -3.857605, y: -3.8114686}
+      - {x: -2.9552512, y: -3.965681}
+      - {x: -0.079395995, y: -4.111325}
+      - {x: 2.644218, y: -4.0120087}
+      - {x: 4.2328176, y: -3.718825}
   m_UseDelaunayMesh: 0
 --- !u!82 &2542815710153384832
 AudioSource:
