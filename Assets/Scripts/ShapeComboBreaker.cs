@@ -23,7 +23,7 @@ public class ShapeComboBreaker : MonoBehaviour
         GameManager.Instance.ResetCombo();
 
         // Popup jaune "Combo cassé"
-        GameManager.Instance.SpawnScorePopup("Combo cassé !", transform.position, Color.yellow);
+        GameManager.Instance.SpawnScorePopup("BREAK !", transform.position, Color.yellow);
 
         Destroy(gameObject);
     }

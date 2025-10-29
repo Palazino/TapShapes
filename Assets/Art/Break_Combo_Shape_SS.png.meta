@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: d6908fe9828e175469eb1901dbd6816e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7912369205972934957
+    second: Break_Combo_Shape_SS_0
+  - first:
+      213: 2994511976846426103
+    second: Break_Combo_Shape_SS_1
+  - first:
+      213: 6658734078735334546
+    second: Break_Combo_Shape_SS_2
+  - first:
+      213: 5668480129231743856
+    second: Break_Combo_Shape_SS_3
+  - first:
+      213: 8654394469185305090
+    second: Break_Combo_Shape_SS_4
+  - first:
+      213: -326092131765579463
+    second: Break_Combo_Shape_SS_5
+  - first:
+      213: 7057362982807736831
+    second: Break_Combo_Shape_SS_6
+  - first:
+      213: 604320451022604453
+    second: Break_Combo_Shape_SS_7
+  - first:
+      213: 5323240934991409488
+    second: Break_Combo_Shape_SS_8
+  - first:
+      213: 4069920648185278493
+    second: Break_Combo_Shape_SS_9
+  - first:
+      213: 3892522402264250114
+    second: Break_Combo_Shape_SS_10
+  - first:
+      213: -2532612115218561771
+    second: Break_Combo_Shape_SS_11
+  - first:
+      213: 4738214163908596767
+    second: Break_Combo_Shape_SS_12
+  - first:
+      213: -6667102119159959609
+    second: Break_Combo_Shape_SS_13
+  - first:
+      213: -2408121184851885400
+    second: Break_Combo_Shape_SS_14
+  - first:
+      213: 4544936792427166231
+    second: Break_Combo_Shape_SS_15
+  - first:
+      213: 1771004938319101142
+    second: Break_Combo_Shape_SS_16
+  - first:
+      213: 4619087205256225872
+    second: Break_Combo_Shape_SS_17
+  - first:
+      213: -8202067114528367269
+    second: Break_Combo_Shape_SS_18
+  - first:
+      213: -6721318720794453282
+    second: Break_Combo_Shape_SS_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 309
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d21a1cd0fd16ecd60800000000000000
+      internalID: 7912369205972934957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 672
+        width: 309
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ff759ff6c4ae8920800000000000000
+      internalID: 2994511976846426103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_2
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 760
+        width: 58
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29cbec87d53986c50800000000000000
+      internalID: 6658734078735334546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_3
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 8
+        width: 629
+        height: 1011
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07be73705ac7aae40800000000000000
+      internalID: 5668480129231743856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_4
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 719
+        width: 58
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20a35e1bae59a1870800000000000000
+      internalID: 8654394469185305090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_5
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 605
+        width: 107
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93110121fec797bf0800000000000000
+      internalID: -326092131765579463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_6
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 560
+        width: 181
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff11f39cd3ac0f160800000000000000
+      internalID: 7057362982807736831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_7
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 136
+        width: 666
+        height: 561
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a8c4b59f3af26800800000000000000
+      internalID: 604320451022604453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_8
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 591
+        width: 162
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0513bf73d63ffd940800000000000000
+      internalID: 5323240934991409488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_9
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 503
+        width: 203
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d107c1324434b7830800000000000000
+      internalID: 4069920648185278493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_10
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 472
+        width: 169
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 207f53b5084050630800000000000000
+      internalID: 3892522402264250114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_11
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 490
+        width: 130
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5150c8613ba5adcd0800000000000000
+      internalID: -2532612115218561771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_12
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 433
+        width: 121
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f141f7d8da481c140800000000000000
+      internalID: 4738214163908596767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_13
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 351
+        width: 102
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cf673a42f1b973a0800000000000000
+      internalID: -6667102119159959609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_14
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 352
+        width: 95
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a28fc88a82a49ed0800000000000000
+      internalID: -2408121184851885400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_15
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 88
+        width: 74
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71a793fbeebd21f30800000000000000
+      internalID: 4544936792427166231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_16
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 112
+        width: 22
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dcf8f3bb9fd39810800000000000000
+      internalID: 1771004938319101142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_17
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 135
+        width: 76
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05469d7175b4a1040800000000000000
+      internalID: 4619087205256225872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_18
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 223
+        width: 166
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5d9f9e6a676c2e80800000000000000
+      internalID: -8202067114528367269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break_Combo_Shape_SS_19
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 105
+        width: 50
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eda1dd80c3419b2a0800000000000000
+      internalID: -6721318720794453282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Break_Combo_Shape_SS_0: 7912369205972934957
+      Break_Combo_Shape_SS_1: 2994511976846426103
+      Break_Combo_Shape_SS_10: 3892522402264250114
+      Break_Combo_Shape_SS_11: -2532612115218561771
+      Break_Combo_Shape_SS_12: 4738214163908596767
+      Break_Combo_Shape_SS_13: -6667102119159959609
+      Break_Combo_Shape_SS_14: -2408121184851885400
+      Break_Combo_Shape_SS_15: 4544936792427166231
+      Break_Combo_Shape_SS_16: 1771004938319101142
+      Break_Combo_Shape_SS_17: 4619087205256225872
+      Break_Combo_Shape_SS_18: -8202067114528367269
+      Break_Combo_Shape_SS_19: -6721318720794453282
+      Break_Combo_Shape_SS_2: 6658734078735334546
+      Break_Combo_Shape_SS_3: 5668480129231743856
+      Break_Combo_Shape_SS_4: 8654394469185305090
+      Break_Combo_Shape_SS_5: -326092131765579463
+      Break_Combo_Shape_SS_6: 7057362982807736831
+      Break_Combo_Shape_SS_7: 604320451022604453
+      Break_Combo_Shape_SS_8: 5323240934991409488
+      Break_Combo_Shape_SS_9: 4069920648185278493
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
