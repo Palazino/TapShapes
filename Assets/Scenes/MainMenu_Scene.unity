@@ -572,39 +572,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allUpgrades:
-  - upgradeID: 
-    displayName: 
-    description: 
+  - upgradeID: UP_SCORE_PLUS
+    displayName: ---
+    description: ---
     cost: 0
     isUnlocked: 0
-  - upgradeID: 
-    displayName: 
-    description: 
+  - upgradeID: UP_COMBO_TIME
+    displayName: ---
+    description: --
     cost: 0
     isUnlocked: 0
-  - upgradeID: 
-    displayName: 
-    description: 
+  - upgradeID: UP_MULTIPLIER_BASE
+    displayName: ---
+    description: ---
     cost: 0
     isUnlocked: 0
-  - upgradeID: 
-    displayName: 
-    description: 
+  - upgradeID: UP_EXTRA_LIFE
+    displayName: ---
+    description: ---
     cost: 0
     isUnlocked: 0
-  - upgradeID: 
-    displayName: 
-    description: 
+  - upgradeID: UP_TRAP_SHIELD
+    displayName: ---
+    description: ---
     cost: 0
     isUnlocked: 0
-  - upgradeID: 
-    displayName: 
-    description: 
+  - upgradeID: UP_GEM_DROP
+    displayName: ---
+    description: ---
     cost: 0
     isUnlocked: 0
-  - upgradeID: 
-    displayName: 
-    description: 
+  - upgradeID: UP_SLOW_FADE
+    displayName: ---
+    description: ---
     cost: 0
     isUnlocked: 0
 --- !u!1 &331611941
