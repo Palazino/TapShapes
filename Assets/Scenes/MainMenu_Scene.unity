@@ -573,38 +573,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allUpgrades:
   - upgradeID: UP_SCORE_PLUS
-    displayName: ---
-    description: ---
+    displayName: Scoring
+    description: +1 Per Click
     cost: 0
     isUnlocked: 0
   - upgradeID: UP_COMBO_TIME
-    displayName: ---
-    description: --
+    displayName: Combo
+    description: More Time Combo
     cost: 0
     isUnlocked: 0
   - upgradeID: UP_MULTIPLIER_BASE
-    displayName: ---
-    description: ---
+    displayName: Base Combo
+    description: Start at x1.2
     cost: 0
     isUnlocked: 0
   - upgradeID: UP_EXTRA_LIFE
-    displayName: ---
-    description: ---
+    displayName: Extra Life
+    description: One More Life
     cost: 0
     isUnlocked: 0
   - upgradeID: UP_TRAP_SHIELD
-    displayName: ---
-    description: ---
+    displayName: Shield
+    description: Protect to 1 Trap
     cost: 0
     isUnlocked: 0
   - upgradeID: UP_GEM_DROP
-    displayName: ---
-    description: ---
+    displayName: Gems
+    description: More Gems
     cost: 0
     isUnlocked: 0
   - upgradeID: UP_SLOW_FADE
-    displayName: ---
-    description: ---
+    displayName: Fade
+    description: Dissapear More Time
     cost: 0
     isUnlocked: 0
 --- !u!1 &331611941
