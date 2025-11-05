@@ -23,6 +23,7 @@ public class ShapeScorePenalty : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
+        AudioManager.Instance?.Play("Minus");
         // Applique une pénalité fixe, sans combo ni multiplicateur
         GameManager.Instance.AddPenalty(penaltyAmount, transform.position, showPopup: false, breakCombo: breakCombo);
 

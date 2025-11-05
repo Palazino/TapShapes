@@ -11,6 +11,7 @@ public class ShapeGhost : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         StartCoroutine(GhostRoutine());
         Invoke(nameof(AutoDestroy), lifeTime);
+
     }
 
     private void AutoDestroy()
@@ -33,6 +34,7 @@ public class ShapeGhost : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
+        AudioManager.Instance?.Play("Ghost");
         GameManager.Instance.AddScore(2, transform.position);
         GameManager.Instance.SpawnScorePopup("+2", transform.position, Color.cyan);
 

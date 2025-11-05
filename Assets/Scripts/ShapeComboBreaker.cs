@@ -20,6 +20,7 @@ public class ShapeComboBreaker : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
+        AudioManager.Instance?.Play("BreakCombo");
         GameManager.Instance.ResetCombo();
 
         // Popup jaune "Combo cassé"
