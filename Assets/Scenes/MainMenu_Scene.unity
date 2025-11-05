@@ -1077,19 +1077,25 @@ MonoBehaviour:
   - name: Trap
     clip: {fileID: 8300000, guid: 5ca697570ebf13e418afeebdd0fbabed, type: 3}
     volume: 0.5
-    pitch: 0
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Minus
     clip: {fileID: 8300000, guid: 290c0ea9be1ccb043a5505ee3a7ea21f, type: 3}
     volume: 0.5
-    pitch: 0
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Ghost
     clip: {fileID: 8300000, guid: f9c0c365e44b23143b5c84fb2dd6477d, type: 3}
     volume: 0.5
-    pitch: 0
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShapeWin
+    clip: {fileID: 8300000, guid: d9a4cc9fbfb93e94c84240ed88f4f452, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!4 &584002890

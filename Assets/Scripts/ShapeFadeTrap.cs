@@ -18,6 +18,7 @@ public class ShapeFadeTrap : ShapeFade
     protected override void OnMouseDown()
     {
         if (isFadingOut) return;
+        AudioManager.Instance?.Play("Trap");
         StartCoroutine(TriggerTrapEffect());
     }
 
@@ -30,9 +31,6 @@ public class ShapeFadeTrap : ShapeFade
     IEnumerator TriggerTrapEffect()
     {
         isFadingOut = true;
-
-        if (trapSound && audioSource)
-            audioSource.PlayOneShot(trapSound);
 
         yield return StartCoroutine(FadeOutWithPulse());
 

@@ -46,6 +46,7 @@ public class ShapeFade : MonoBehaviour
         if (!isFadingOut)
         {
             isFadingOut = true; // anti double-clic instantané
+            AudioManager.Instance?.Play("ShapeWin");
             StartCoroutine(FadeOutWithPulse());
             GameManager.Instance?.AddScore(1, transform.position);
         }
