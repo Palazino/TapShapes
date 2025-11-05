@@ -113,6 +113,7 @@ public class ShapeSpawner : MonoBehaviour
         if (shapeToSpawn == null) return;
 
         GameObject newShape = Instantiate(shapeToSpawn, spawnPos, Quaternion.identity);
+        AudioManager.Instance.Play("Pop");
 
         ShapeFade fade = newShape.GetComponent<ShapeFade>();
 
