@@ -4,19 +4,21 @@ public class DifficultyManager : MonoBehaviour
 {
     public static DifficultyManager Instance;
 
-    public float timeElapsed = 0f;
+    [Header("Paramètres de progression")]
+    public float timeToReachMaxDifficulty = 120f; // Temps pour atteindre la difficulté max
+    public float relaxFactor = 0.8f;              // Facteur de relâchement temporaire
+    public float relaxDuration = 5f;              // Durée de la phase relax
+    public float intensityBoost = 5f;             // Réduction du tempsToReachMax par vague
+    public float waveDuration = 30f;              // Durée entre chaque pic de tension
 
-    [Header("Réglages de difficulté")]
-    public float minLifeTime = 0.8f;
-    public float maxLifeTime = 3f;
-    public int maxShapesOnScreen = 1;
-    public float timeToReachMaxDifficulty = 60f; // temps en secondes pour atteindre la difficulté maximale
+    private float waveTimer = 0f;
+    private float timeElapsed = 0f;
+    private int waveCount = 0;
+    private bool isRelaxing = false;
 
-    [Header("Seuils de difficulté spéciaux")]
-    [SerializeField] private float tier2Time = 45f; // apparition des formes négatives
-    [SerializeField] private float tier3Time = 90f; // apparition des casse-combos
-    [SerializeField] private float tier4Time = 120f; // apparition formes spéciales
-
+    [Header("Paliers de difficulté (Tiers)")]
+    public int currentTier = 1;
+    public float[] difficultyThresholds = { 0.2f, 0.4f, 0.6f, 0.8f }; // pour Tier 1 → 5
 
     void Awake()
     {
@@ -29,80 +31,76 @@ public class DifficultyManager : MonoBehaviour
     void Update()
     {
         timeElapsed += Time.deltaTime;
-    }
-    public int GetCurrentTier()
-    {
-        if (timeElapsed >= tier4Time) return 4;
-        if (timeElapsed >= tier3Time) return 3;
-        if (timeElapsed >= tier2Time) return 2;
-        return 1;
-    }
 
-    // Appelé par les formes pour savoir leur durée de vie
-    public float GetCurrentShapeLifetime()
-    {
-        float t = Mathf.Clamp01(timeElapsed / timeToReachMaxDifficulty);
-        return Mathf.Lerp(maxLifeTime, minLifeTime, t);
-    }
+        if (!isRelaxing)
+            waveTimer += Time.deltaTime;
 
-    // Appelé par le spawner pour savoir combien de formes max doivent être présentes
-    public int GetMaxShapesOnScreen()
-    {
-        float t = Mathf.Clamp01(timeElapsed / timeToReachMaxDifficulty);
-        return Mathf.FloorToInt(Mathf.Lerp(1, maxShapesOnScreen, t));
-    }
-    public float GetTrapChance()
-    {
-        float t = Mathf.Clamp01(timeElapsed / timeToReachMaxDifficulty);
-        return Mathf.Lerp(0.05f, 0.3f, t); 
-    }
-
-    // --- Ajout du système de vagues dynamiques ---
-    [Header("⚡ Réglages des vagues de tension")]
-    [SerializeField, Tooltip("Durée d'une phase avant un pic de difficulté (en secondes)")]
-    private float waveDuration = 30f;
-
-    [SerializeField, Tooltip("Augmentation de la difficulté à chaque vague (plus c'est haut, plus c'est brutal)")]
-    private float intensityBoost = 0.5f;
-
-    [SerializeField, Range(0.5f, 1f), Tooltip("Facteur de détente après le pic (1 = pas de relâchement)")]
-    private float relaxFactor = 0.8f;
-
-    [SerializeField, Tooltip("Durée du relâchement (en secondes)")]
-    private float relaxDuration = 5f;
-
-    [SerializeField, Tooltip("Active ou désactive le feedback visuel (flash, son, etc.)")]
-    private bool enableWaveFeedback = true;
-
-    private float waveTimer = 0f;
-    private int waveCount = 0;
-
-    void LateUpdate()
-    {
-        waveTimer += Time.deltaTime;
-
-        // Détection des paliers de tension
         if (waveTimer >= waveDuration)
         {
             waveTimer = 0f;
             waveCount++;
 
-            // Boost temporaire
+            // Boost progressif (accélère un peu la montée de difficulté)
             timeToReachMaxDifficulty = Mathf.Max(10f, timeToReachMaxDifficulty - intensityBoost);
 
-            // Relax phase
+            // Lance une courte phase de répit
             StartCoroutine(RelaxPhase());
 
             // Feedback visuel / sonore
             GameManager.Instance?.TriggerDifficultyFlash(waveCount);
         }
+
+        UpdateCurrentTier();
     }
 
     private System.Collections.IEnumerator RelaxPhase()
     {
-        yield return new WaitForSeconds(5f);
-        timeToReachMaxDifficulty /= relaxFactor;
+        isRelaxing = true;
+
+        // On diminue temporairement la tension (plus de marge)
+        float originalTime = timeToReachMaxDifficulty;
+        timeToReachMaxDifficulty *= (1f / relaxFactor); // augmentation temporaire du temps de montée
+
+        yield return new WaitForSeconds(relaxDuration);
+
+        // Retour à la progression normale
+        timeToReachMaxDifficulty = originalTime;
+        isRelaxing = false;
     }
 
+    private void UpdateCurrentTier()
+    {
+        float difficulty = Mathf.Clamp01(timeElapsed / timeToReachMaxDifficulty);
 
+        for (int i = 0; i < difficultyThresholds.Length; i++)
+        {
+            if (difficulty >= difficultyThresholds[i])
+                currentTier = i + 1;
+        }
+    }
+
+    public int GetCurrentTier()
+    {
+        return currentTier;
+    }
+
+    public float GetTrapChance()
+    {
+        return Mathf.Lerp(0.05f, 0.4f, GetDifficultyValue());
+    }
+
+    public int GetMaxShapesOnScreen()
+    {
+        return Mathf.RoundToInt(Mathf.Lerp(3f, 12f, GetDifficultyValue()));
+    }
+
+    public float GetCurrentShapeLifetime()
+    {
+        return Mathf.Lerp(4f, 1.2f, GetDifficultyValue());
+    }
+
+    private float GetDifficultyValue()
+    {
+        return Mathf.Clamp01(timeElapsed / timeToReachMaxDifficulty);
+    }
 }
